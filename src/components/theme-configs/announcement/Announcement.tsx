@@ -8,7 +8,7 @@ const Announcement = ({ config }: Props) => {
     return (
       <div
         id={config.id}
-        className="h-10 text-center p-2"
+        className="h-10 text-center p-2 text-sm"
         style={{
           background: config.settings.announcement_background.value,
           color: config.settings.announcement_text_color.value,

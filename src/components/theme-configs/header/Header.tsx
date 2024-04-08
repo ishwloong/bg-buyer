@@ -3,11 +3,12 @@ import { THeaderBar, THeaderConfig } from "@/lib/types";
 import React from "react";
 import Image from "next/image";
 import clsx from "clsx";
+import { Search, ShoppingBag } from "lucide-react";
 
 type Props = { config: THeaderBar };
 
 const Header = ({ config }: Props) => {
-  console.log(config);
+  // console.log(config);
 
   if (config.visible) {
     return (
@@ -48,13 +49,37 @@ const Header = ({ config }: Props) => {
               className="w-full h-[38px] rounded-s-[5px] focus:outline-none p-[.375rem_.75rem]"
               placeholder="What are you looking for?"
             />
-            <div className="w-[52px] h-[38px]"></div>
+            <div className="w-[52px] h-[38px] py-[6px] px-[14px] cursor-pointer">
+              <Search />
+            </div>
           </form>
-          <div className="w-10 h-10"></div>
+          <ShoppingBag className="hover:text-orange-500 cursor-pointer" />
         </div>
 
         {config.template_type === "bg_header_bar_rich" && (
-          <div className="h-14"></div>
+          <div className="h-14 py-2 flex gap-4 justify-center items-center">
+            <div className="p-2 cursor-pointer text-lg">
+              <a style={{ background: config.settings.menu_bg.value }}>Home</a>
+            </div>
+            <div className="p-2 cursor-pointer text-lg">
+              <a style={{ background: config.settings.menu_bg.value }}>
+                New arrivals
+              </a>
+            </div>
+            <div className="p-2 cursor-pointer text-lg">
+              <a style={{ background: config.settings.menu_bg.value }}>Shop</a>
+            </div>
+            <div className="p-2 cursor-pointer text-lg">
+              <a style={{ background: config.settings.menu_bg.value }}>
+                About Us
+              </a>
+            </div>
+            <div className="p-2 cursor-pointer text-lg">
+              <a style={{ background: config.settings.menu_bg.value }}>
+                Contact Us
+              </a>
+            </div>
+          </div>
         )}
       </div>
     );

@@ -73,6 +73,29 @@ export type THeaderBar = {
   template_type: string;
 };
 
+export type TFooterChild = {
+  id: string;
+  heading: string;
+  visible: boolean;
+  style: string;
+  template_type: string;
+  settings: {
+    [key: string]: {
+      id: string;
+      heading: string;
+      value: string;
+      data_settings: null;
+    };
+  };
+  children_items: TFooterChild;
+};
+
+export type TFooterConfig = {
+  id: string;
+  heading: string;
+  children_items: TFooterChild[];
+};
+
 export type TAnnouncement = {
   heading: string;
   id: string;
@@ -1273,191 +1296,7 @@ export type TObjConfig = {
       ];
     }
   ];
-  footer: {
-    id: string;
-    heading: string;
-    children_items: [
-      {
-        id: string;
-        heading: string;
-        visible: boolean;
-        style: string;
-        template_type: string;
-        settings: {
-          brand: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-          heading: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-          content: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-          width: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-          show_social: {
-            id: string;
-            heading: string;
-            value: boolean;
-          };
-        };
-        children_items: null;
-      },
-      {
-        id: string;
-        heading: string;
-        visible: boolean;
-        style: string;
-        template_type: string;
-        settings: {
-          heading: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-          width: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-          menu: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-        };
-        children_items: null;
-      },
-      {
-        id: string;
-        heading: string;
-        visible: boolean;
-        style: string;
-        template_type: string;
-        settings: {
-          heading: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-          width: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-          menu: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-        };
-        children_items: null;
-      },
-      {
-        id: string;
-        heading: string;
-        visible: boolean;
-        style: string;
-        template_type: string;
-        settings: {
-          heading: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-          width: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-          newsletter_desc: {
-            id: string;
-            heading: null;
-            value: string;
-            data_settings: null;
-          };
-        };
-        children_items: null;
-      },
-      {
-        id: string;
-        heading: string;
-        visible: boolean;
-        style: string;
-        template_type: string;
-        settings: {
-          payment_icon: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-          copyright: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-        };
-        children_items: null;
-      },
-      {
-        id: string;
-        heading: string;
-        visible: boolean;
-        style: string;
-        template_type: string;
-        settings: {
-          footer_bg: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-          footer_color: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-          footer_heading: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-          footer_divider: {
-            id: string;
-            heading: string;
-            value: string;
-            data_settings: null;
-          };
-        };
-        children_items: null;
-      }
-    ];
-  };
+  footer: TFooterConfig;
   theme_settings: {
     id: string;
     heading: string;

@@ -2,6 +2,7 @@ import Announcement from "@/components/theme-configs/announcement/Announcement";
 import Header from "@/components/theme-configs/header/Header";
 import { getThemeConfig } from "@/lib/api-config";
 import "@/app/globals.css";
+import Footer from "@/components/theme-configs/footer/Footer";
 
 export const metadata = {
   title: "Next.js",
@@ -17,6 +18,7 @@ export default async function RootLayout({
     data: {
       object_config: {
         header: { announcement, header_bar },
+        footer,
       },
     },
   } = await getThemeConfig();
@@ -27,6 +29,7 @@ export default async function RootLayout({
         <Announcement config={announcement} />
         <Header config={header_bar} />
         {children}
+        <Footer config={footer} />
       </body>
     </html>
   );
