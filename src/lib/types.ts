@@ -15,62 +15,20 @@ export type THeaderBar = {
   id: string;
   heading: string;
   settings: {
-    header_logo_url: {
-      id: string;
-      heading: string;
-      value: string;
-      data_settings: null;
-    };
-    header_navigation_items: {
-      id: string;
-      heading: string;
-      value: string;
-      data_settings: null;
-    };
-    header_center_logo: {
-      id: string;
-      label: null;
-      value: boolean;
-    };
-    header_content_alignment: {
-      id: string;
-      heading: string;
-      value: string;
-      data_settings: null;
-    };
-    full_width: {
-      id: string;
-      label: null;
-      value: boolean;
-    };
-    fixed_header: {
-      id: string;
-      label: null;
-      value: boolean;
-    };
-    header_bg: {
+    [key: string]: {
       id: string;
       heading: null;
       value: string;
-      data_settings: null;
-    };
-    txt_color: {
-      id: string;
-      heading: null;
-      value: string;
-      data_settings: null;
-    };
-    menu_bg: {
-      id: string;
-      heading: null;
-      value: string;
-      data_settings: null;
+      data_settings?: null;
     };
   };
   children_items: null;
   visible: boolean;
   style: string;
-  template_type: string;
+  template_type:
+    | "bg_header_bar_inline"
+    | "bg_header_bar_rich"
+    | "bg_header_bar_minimal";
 };
 
 export type TFooterChild = {
@@ -84,7 +42,7 @@ export type TFooterChild = {
       id: string;
       heading: string;
       value: string;
-      data_settings: null;
+      data_settings?: null;
     };
   };
   children_items: TFooterChild;
@@ -103,20 +61,11 @@ export type TAnnouncement = {
   style: string;
   template_type: string;
   settings: {
-    announcement_content: {
-      heading: string;
+    [key: string]: {
       id: string;
-      value: string;
-    };
-    announcement_text_color: {
       heading: string;
       value: string;
-      id: string;
-    };
-    announcement_background: {
-      heading: string;
-      value: string;
-      id: string;
+      data_settings?: null;
     };
   };
 };

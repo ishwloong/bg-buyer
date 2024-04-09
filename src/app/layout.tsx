@@ -1,6 +1,6 @@
 import Announcement from "@/components/theme-configs/announcement/Announcement";
 import Header from "@/components/theme-configs/header/Header";
-import { getThemeConfig } from "@/lib/api-config";
+import { getThemeConfig, getThemeMenu } from "@/lib/api";
 import "@/app/globals.css";
 import Footer from "@/components/theme-configs/footer/Footer";
 
@@ -21,13 +21,20 @@ export default async function RootLayout({
         footer,
       },
     },
+    data,
   } = await getThemeConfig();
+
+  console.log(JSON.stringify(data));
+
+  const {
+    data: { items },
+  } = await getThemeMenu(header_bar.settings.header_navigation_items.value);
 
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
         <Announcement config={announcement} />
-        <Header config={header_bar} />
+        <Header config={header_bar} navigation={items} />
         {children}
         <Footer config={footer} />
       </body>
