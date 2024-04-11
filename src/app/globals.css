@@ -81,3 +81,31 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
+
+.ratio-1x1 {
+  @apply aspect-square;
+}
+
+.ratio-2x3 {
+  @apply aspect-[2/3];
+}
+
+.ratio-3x2 {
+  @apply aspect-[3/2];
+}
+
+.ratio-3x4 {
+  @apply aspect-[3/4];
+}
+
+.ratio-4x3 {
+  @apply aspect-[4/3];
+}
+
+.ratio-16x9 {
+  @apply aspect-[16/9]
+}
+
+.ratio-21x9 {
+  @apply aspect-[21/9]
+}

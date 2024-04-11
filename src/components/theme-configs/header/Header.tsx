@@ -10,32 +10,45 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { getThemeConfig, getThemeMenu } from "@/lib/api";
 
-type Props = { config: THeaderBar; navigation: any };
+const Header = async () => {
+  const {
+    data: {
+      object_config: {
+        header: {
+          header_bar: { template_type, settings, visible, id },
+        },
+      },
+    },
+  } = await getThemeConfig();
 
-const Header = ({ config, navigation }: Props) => {
+  const {
+    data: { items },
+  } = await getThemeMenu(settings.header_navigation_items.value);
+
   const navigationEl = (
     <div
       style={{
-        background: config.settings.header_bg.value,
+        background: settings.header_bg.value,
         justifyContent:
-          config.template_type === "bg_header_bar_rich"
+          template_type === "bg_header_bar_rich"
             ? "center"
-            : config.settings.header_content_alignment.value,
+            : settings.header_content_alignment.value,
       }}
       className={clsx(
         "w-full flex flex-1",
-        config.settings.header_center_logo.value &&
-          config.template_type === "bg_header_bar_rich"
+        settings.header_center_logo.value &&
+          template_type === "bg_header_bar_rich"
           ? "order-1"
           : "order-2"
       )}
     >
-      {navigation?.map((item: any, idx: number) => (
+      {items?.map((item: any, idx: number) => (
         <div key={idx} className="p-2 cursor-pointer text-lg">
           <Link
             className="font-bold"
-            style={{ background: config.settings.menu_bg.value }}
+            style={{ background: settings.menu_bg.value }}
             href={item.link}
           >
             {item.name}
@@ -45,58 +58,58 @@ const Header = ({ config, navigation }: Props) => {
     </div>
   );
 
-  if (config.visible) {
+  if (visible) {
     return (
       <div
         className={clsx(
-          config.template_type === "bg_header_bar_rich" &&
-            "flex flex-col gap-4 pb-4"
+          "z-10",
+          template_type === "bg_header_bar_rich" && "flex flex-col gap-4 pb-4",
+          settings.fixed_header.value && "sticky top-0"
         )}
         style={{
-          background: config.settings.header_bg.value,
+          background: settings.header_bg.value,
         }}
       >
         <div
-          id={config.id}
+          id={id}
           className={clsx(
-            "px-[300px] py-4 h-[112px] relative flex items-center gap-5",
-            config.settings.fixed_header.value && "sticky top-0"
+            "w-full max-w-[1320px] m-auto py-4 h-[112px] relative flex items-center gap-5"
           )}
           style={{
             position: "relative",
-            color: config.settings.txt_color.value,
+            color: settings.txt_color.value,
           }}
         >
           <div
             className={clsx(
-              (config.settings.header_content_alignment.value === "center" ||
-                config.template_type === "bg_header_bar_rich") &&
+              (settings.header_content_alignment.value === "center" ||
+                template_type === "bg_header_bar_rich") &&
                 "flex-1"
             )}
           >
             <Image
               className={clsx(
                 "!relative object-contain cursor-pointer",
-                config.settings.header_center_logo.value &&
-                  config.template_type === "bg_header_bar_rich"
+                settings.header_center_logo.value &&
+                  template_type === "bg_header_bar_rich"
                   ? "order-2"
                   : "order-1"
               )}
-              src={config.settings.header_logo_url.value || ""}
-              alt={config.settings.header_logo_url.heading || "logo"}
+              src={settings.header_logo_url.value || ""}
+              alt={settings.header_logo_url.heading || "logo"}
               width={0}
               height={0}
               sizes="100vw"
               style={{ width: "auto", height: "100%" }}
             />
           </div>
-          {config.template_type === "bg_header_bar_rich" ? (
+          {template_type === "bg_header_bar_rich" ? (
             <form
               action=""
               className={clsx(
                 "max-w-[400px] w-full border border-[#dee2e6] rounded-[5px] h-10 flex flex-1",
-                config.settings.header_center_logo.value &&
-                  config.template_type === "bg_header_bar_rich"
+                settings.header_center_logo.value &&
+                  template_type === "bg_header_bar_rich"
                   ? "order-1"
                   : "order-2"
               )}
@@ -118,7 +131,7 @@ const Header = ({ config, navigation }: Props) => {
           )}
           <div className="flex flex-1 justify-end order-3 gap-4">
             <User className="hover:text-orange-500 cursor-pointer" />
-            {config.template_type === "bg_header_bar_inline" && (
+            {template_type === "bg_header_bar_inline" && (
               <Sheet>
                 <SheetTrigger asChild>
                   <Search className="hover:text-orange-500 cursor-pointer" />
@@ -146,7 +159,7 @@ const Header = ({ config, navigation }: Props) => {
           </div>
         </div>
 
-        {config.template_type === "bg_header_bar_rich" && navigationEl}
+        {template_type === "bg_header_bar_rich" && navigationEl}
       </div>
     );
   } else return <></>;

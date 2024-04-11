@@ -1320,9 +1320,13 @@ export type TObjConfig = {
           }
         ];
         settings: {
-          font_url: {
+          [key: string]: {
             id: string;
-            value: string;
+            heading?: null;
+            value?: string;
+            data_settings?: null;
+            readonly?: boolean;
+            share_by?: string;
           };
         };
       },
@@ -1331,36 +1335,13 @@ export type TObjConfig = {
         heading: string;
         children_items: null;
         settings: {
-          primary_color: {
+          [key: string]: {
             id: string;
-            value: string;
-            heading: string;
-          };
-          heading_text_color: {
-            id: string;
-            value: string;
-            heading: string;
-          };
-          body_text_color: {
-            id: string;
-            value: string;
-            heading: string;
-          };
-          button_color: {
-            id: string;
-            value: string;
-            heading: string;
-            readonly: boolean;
-            share_by: string;
-          };
-          button_color_hover: {
-            id: string;
-            value: string;
-          };
-          button_text_color: {
-            id: string;
-            value: string;
-            heading: string;
+            heading?: null;
+            value?: string;
+            data_settings?: null;
+            readonly?: boolean;
+            share_by?: string;
           };
         };
       },
@@ -1369,10 +1350,13 @@ export type TObjConfig = {
         heading: string;
         children_items: null;
         settings: {
-          favicon: {
+          [key: string]: {
             id: string;
-            value: string;
-            heading: string;
+            heading?: null;
+            value?: string;
+            data_settings?: null;
+            readonly?: boolean;
+            share_by?: string;
           };
         };
       },
@@ -1381,44 +1365,13 @@ export type TObjConfig = {
         heading: string;
         children_items: null;
         settings: {
-          show_breadcrumb: {
+          [key: string]: {
             id: string;
-            value: boolean;
-            heading: string;
-          };
-          show_searchbar: {
-            id: string;
-            heading: string;
-            value: boolean;
-          };
-          show_account: {
-            id: string;
-            heading: string;
-            value: boolean;
-          };
-          heading_centered: {
-            id: string;
-            value: boolean;
-            heading: string;
-          };
-          default_redirect_after_success: {
-            id: string;
-            heading: string;
-            value: boolean;
-          };
-          border_radius: {
-            id: string;
-            value: 0.0;
-          };
-          cart_type: {
-            id: string;
-            value: string;
-            heading: string;
-          };
-          show_back_to_top_btn: {
-            id: string;
-            heading: string;
-            value: boolean;
+            heading?: null;
+            value?: string;
+            data_settings?: null;
+            readonly?: boolean;
+            share_by?: string;
           };
         };
       },
@@ -1427,17 +1380,13 @@ export type TObjConfig = {
         heading: string;
         children_items: null;
         settings: {
-          style_dk: {
+          [key: string]: {
             id: string;
-            value: string;
-          };
-          style_tl: {
-            id: string;
-            value: string;
-          };
-          style_mb: {
-            id: string;
-            value: string;
+            heading?: null;
+            value?: string;
+            data_settings?: null;
+            readonly?: boolean;
+            share_by?: string;
           };
         };
       },
@@ -1590,18 +1539,13 @@ export type TObjConfig = {
             style: string;
             template_type: string;
             settings: {
-              url: {
+              [key: string]: {
                 id: string;
-                heading: string;
-                value: string;
-                label: string;
-                data_settings: null;
-              };
-              icon: {
-                id: string;
-                heading: string;
-                value: string;
-                data_settings: null;
+                heading?: null;
+                value?: string;
+                data_settings?: null;
+                readonly?: boolean;
+                share_by?: string;
               };
             };
             children_items: null;
@@ -1613,18 +1557,13 @@ export type TObjConfig = {
             style: string;
             template_type: string;
             settings: {
-              url: {
+              [key: string]: {
                 id: string;
-                heading: string;
-                label: string;
-                value: string;
-                data_settings: null;
-              };
-              icon: {
-                id: string;
-                heading: string;
-                value: string;
-                data_settings: null;
+                heading?: null;
+                value?: string;
+                data_settings?: null;
+                readonly?: boolean;
+                share_by?: string;
               };
             };
             children_items: null;
@@ -1636,18 +1575,13 @@ export type TObjConfig = {
             style: string;
             template_type: string;
             settings: {
-              url: {
+              [key: string]: {
                 id: string;
-                heading: string;
-                value: string;
-                label: string;
-                data_settings: null;
-              };
-              icon: {
-                id: string;
-                heading: string;
-                value: string;
-                data_settings: null;
+                heading?: null;
+                value?: string;
+                data_settings?: null;
+                readonly?: boolean;
+                share_by?: string;
               };
             };
             children_items: null;
@@ -1659,9 +1593,13 @@ export type TObjConfig = {
         id: string;
         heading: string;
         settings: {
-          script: {
+          [key: string]: {
             id: string;
-            value: string;
+            heading?: null;
+            value?: string;
+            data_settings?: null;
+            readonly?: boolean;
+            share_by?: string;
           };
         };
       }

@@ -1,8 +1,8 @@
 import Announcement from "@/components/theme-configs/announcement/Announcement";
 import Header from "@/components/theme-configs/header/Header";
-import { getThemeConfig, getThemeMenu } from "@/lib/api";
 import "@/app/globals.css";
 import Footer from "@/components/theme-configs/footer/Footer";
+import { getThemeConfig } from "@/lib/api";
 
 export const metadata = {
   title: "Next.js",
@@ -14,29 +14,20 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const {
-    data: {
-      object_config: {
-        header: { announcement, header_bar },
-        footer,
-      },
-    },
-    data,
-  } = await getThemeConfig();
-
-  console.log(JSON.stringify(data));
-
-  const {
-    data: { items },
-  } = await getThemeMenu(header_bar.settings.header_navigation_items.value);
+  // const {
+  //   data,
+  //   data: {
+  //     object_config: { root },
+  //   },
+  // } = await getThemeConfig();
 
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Announcement config={announcement} />
-        <Header config={header_bar} navigation={items} />
+        <Announcement />
+        <Header />
         {children}
-        <Footer config={footer} />
+        <Footer />
       </body>
     </html>
   );
