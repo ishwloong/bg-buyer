@@ -90,12 +90,20 @@ body {
   @apply aspect-[2/3];
 }
 
+.ratio-3x1 {
+  @apply aspect-[3/1];
+}
+
 .ratio-3x2 {
   @apply aspect-[3/2];
 }
 
 .ratio-3x4 {
   @apply aspect-[3/4];
+}
+
+.ratio-4x3 {
+  @apply aspect-[4/1];
 }
 
 .ratio-4x3 {

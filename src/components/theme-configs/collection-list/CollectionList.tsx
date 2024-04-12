@@ -7,7 +7,6 @@ type Props = { compConfig: any; themeSetting: any };
 
 const CollectionList = ({ compConfig, themeSetting }: Props) => {
   const { settings, children_items } = compConfig;
-  console.log(settings.heading_centered.value);
 
   return (
     <div
@@ -59,9 +58,9 @@ const CollectionList = ({ compConfig, themeSetting }: Props) => {
         }}
         className={`md:grid flex flex-col gap-6`}
       >
-        {children_items.map((item: any) => (
+        {children_items.map((item: any, idx: number) => (
           <div
-            key={item.id}
+            key={idx}
             className="w-full flex flex-col gap-4 items-center cursor-pointer group"
           >
             <div
@@ -83,7 +82,7 @@ const CollectionList = ({ compConfig, themeSetting }: Props) => {
 
             {item.settings.collection_item_name.value && (
               <h3
-                className={`font-medium text-2xl group-hover:text-[#3D8476] transition-all`}
+                className={`font-medium text-2xl group-hover:text-primary transition-all`}
               >
                 {item.settings.collection_item_name.value}
               </h3>

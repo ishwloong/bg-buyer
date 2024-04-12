@@ -1,6 +1,4 @@
 import { getThemeConfig } from "@/lib/api";
-import { TAnnouncement } from "@/lib/types";
-import { headers } from "next/headers";
 
 const Announcement = async () => {
   const {
@@ -12,9 +10,6 @@ const Announcement = async () => {
       },
     },
   } = await getThemeConfig();
-
-  const pathname = headers().get("next-url");
-  console.log(pathname);
   
   if (visible) {
     return (

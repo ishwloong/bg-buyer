@@ -20,7 +20,6 @@ const page = async () => {
   const renderComp = (comp: any) => {
     switch (comp.id) {
       case "home_slideshow_banner":
-        console.log(comp);
         return <SlideShow compConfig={comp} themeSetting={theme_settings} />;
       default:
         return <></>;

@@ -1,11 +1,20 @@
 import { Button } from "@/components/ui/button";
+import { getFeaturedCollection } from "@/lib/api";
 import clsx from "clsx";
-import React from "react";
+import React, { useEffect } from "react";
+import Image from "next/image";
 
 type Props = { compConfig: any; themeSetting: any };
 
-const FeaturedCollection = ({ compConfig, themeSetting }: Props) => {
+const FeaturedCollection = async ({ compConfig, themeSetting }: Props) => {
   const { settings, children_items } = compConfig;
+
+  const {
+    data: { result },
+  } = await getFeaturedCollection(
+    compConfig.id,
+    settings.fc_limit_product.value
+  );
 
   return (
     <div
@@ -56,21 +65,21 @@ const FeaturedCollection = ({ compConfig, themeSetting }: Props) => {
         }}
         className={`md:grid flex flex-col gap-6`}
       >
-        {/* {children_items.map((item: any) => (
+        {result.map((item: any) => (
           <div
             key={item.id}
-            className="w-full flex flex-col gap-4 items-center cursor-pointer group"
+            className="w-full flex flex-col gap-4 items-start cursor-pointer group"
           >
             <div
               className={clsx(
-                "w-full overflow-hidden border",
-                item.settings.collection_item_ratio.value
+                "w-full overflow-hidden border"
+                // item.settings.collection_item_ratio.value
               )}
             >
               <Image
                 className="group-hover:scale-125 transition-all duration-1000"
-                src={item.settings.collection_image.value}
-                alt={item.settings.collection_image.id}
+                src={item.image_url}
+                alt={item.title}
                 width={0}
                 height={0}
                 sizes="100vw"
@@ -78,15 +87,19 @@ const FeaturedCollection = ({ compConfig, themeSetting }: Props) => {
               />
             </div>
 
-            {item.settings.collection_item_name.value && (
-              <h3
-                className={`font-medium text-2xl group-hover:text-[#3D8476] transition-all`}
-              >
-                {item.settings.collection_item_name.value}
-              </h3>
-            )}
+            <div className="flex flex-col gap-2">
+              <span className={`group-hover:text-[#3D8476] transition-all`}>
+                {item.title}
+              </span>
+              <h4 className="flex gap-2">
+                <span className="font-bold text-xl">{item.price}$</span>
+                <span className="text-[#9E9E9E] text-xl line-through">
+                  {item.compare_price}$
+                </span>
+              </h4>
+            </div>
           </div>
-        ))} */}
+        ))}
       </div>
 
       {settings.fc_btn_as_link.value && settings.heading_centered.value && (

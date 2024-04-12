@@ -16,8 +16,6 @@ const HomePage = async (props: Props) => {
 
   const pageConfig = pages.find((page) => page.page_id === "bg_home_page");
 
-  console.log(JSON.stringify(data));
-
   return (
     <div className="flex flex-col gap-20 px-4 lg:px-0 pb-20">
       {pageConfig?.components.map(
@@ -31,10 +29,15 @@ const HomePage = async (props: Props) => {
             />
           )) ||
             (item.id.includes("home_collection") && (
-              <CollectionList compConfig={item} themeSetting={theme_settings} />
+              <CollectionList
+                key={item.id}
+                compConfig={item}
+                themeSetting={theme_settings}
+              />
             )) ||
             (item.id.includes("home_feature_collection") && (
               <FeaturedCollection
+                key={item.id}
                 compConfig={item}
                 themeSetting={theme_settings}
               />

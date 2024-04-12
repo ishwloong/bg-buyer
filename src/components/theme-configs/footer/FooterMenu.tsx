@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 type Props = { menuId: string };
 
 const FooterMenu = async ({ menuId }: Props) => {
+  console.log(menuId);
+
   const {
     data: { items },
   } = await getThemeMenu(menuId);

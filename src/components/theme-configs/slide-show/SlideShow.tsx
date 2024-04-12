@@ -13,7 +13,7 @@ type Props = { compConfig: any; themeSetting: any };
 
 const SlideShow = async ({ compConfig, themeSetting }: Props) => {
   const { settings, children_items } = compConfig;
-  
+
   return (
     <Carousel
       className={clsx(
@@ -24,7 +24,10 @@ const SlideShow = async ({ compConfig, themeSetting }: Props) => {
     >
       <CarouselContent>
         {children_items.map((item: any, idx: number) => (
-          <CarouselItem key={idx} className="w-full aspect-[3/1] relative">
+          <CarouselItem
+            key={idx}
+            className={clsx("w-full relative", item.settings.item_ratio.value)}
+          >
             <Image
               src={item.settings.item_image_url.value}
               alt="alt"
