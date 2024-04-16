@@ -15,19 +15,21 @@ const axiosInstance = (baseUrl: "bgp" | "buyer" | string) => {
       config.headers["X-Host"] = process.env.X_HOST;
       config.headers["X-Store-Domain"] = process.env.X_HOST;
       return config;
-    },
-    () => {
-      throw Error("Failed to fetch data");
     }
+    // (error) => {
+    //   console.log(error);
+    //   return;
+    // }
   );
 
   instance.interceptors.response.use(
     (response) => {
       return response;
-    },
-    (error) => {
-      throw Error("Failed to fetch data");
     }
+    // (error) => {
+    //   console.log(error);
+    //   return;
+    // }
   );
 
   return instance;

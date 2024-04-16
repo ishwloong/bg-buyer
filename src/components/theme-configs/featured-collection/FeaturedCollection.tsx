@@ -29,7 +29,7 @@ const FeaturedCollection = async ({ compConfig, themeSetting }: Props) => {
           settings.heading_centered.value && "items-center"
         )}
       >
-        <h2 className="font-bold text-[32px] leading-[48px]">
+        <h2 className="font-heading text-[32px] leading-[48px]">
           {settings.fc_heading.value}
         </h2>
         <div
@@ -63,12 +63,12 @@ const FeaturedCollection = async ({ compConfig, themeSetting }: Props) => {
         style={{
           gridTemplateColumns: `repeat(${settings.fc_product_per_row.value}, minmax(0, 1fr))`,
         }}
-        className={`md:grid flex flex-col gap-6`}
+        className="md:grid flex flex-col gap-6"
       >
         {result.map((item: any) => (
           <div
             key={item.id}
-            className="w-full flex flex-col gap-4 items-start cursor-pointer group"
+            className="w-full flex flex-col gap-4 items-stretch cursor-pointer group"
           >
             <div
               className={clsx(
@@ -88,7 +88,7 @@ const FeaturedCollection = async ({ compConfig, themeSetting }: Props) => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <span className={`group-hover:text-[#3D8476] transition-all`}>
+              <span className="group-hover:text-[color:var(--primary)] transition-all truncate">
                 {item.title}
               </span>
               <h4 className="flex gap-2">

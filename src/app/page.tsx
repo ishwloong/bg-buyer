@@ -1,5 +1,6 @@
 import CollectionList from "@/components/theme-configs/collection-list/CollectionList";
 import FeaturedCollection from "@/components/theme-configs/featured-collection/FeaturedCollection";
+import PromotionBox from "@/components/theme-configs/promotion-box/PromotionBox";
 import SlideShow from "@/components/theme-configs/slide-show/SlideShow";
 import { getThemeConfig } from "@/lib/api";
 import React from "react";
@@ -35,13 +36,22 @@ const HomePage = async (props: Props) => {
                 themeSetting={theme_settings}
               />
             )) ||
-            (item.id.includes("home_feature_collection") && (
-              <FeaturedCollection
+            (item.id.includes("home_promotion_box") && (
+              <PromotionBox
                 key={item.id}
                 compConfig={item}
                 themeSetting={theme_settings}
               />
             )))
+          ||
+          (item.id.includes("home_feature_collection") && (
+            <FeaturedCollection
+              key={item.id}
+              compConfig={item}
+              themeSetting={theme_settings}
+            />
+          )
+        )
       )}
     </div>
   );
