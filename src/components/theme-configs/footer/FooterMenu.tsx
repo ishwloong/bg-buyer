@@ -5,15 +5,13 @@ import React, { useEffect, useState } from "react";
 type Props = { menuId: string };
 
 const FooterMenu = async ({ menuId }: Props) => {
-  console.log(menuId);
+  const { data } = await getThemeMenu(menuId);
 
-  const {
-    data: { items },
-  } = await getThemeMenu(menuId);
+  if (!data?.items) return <></>;
 
   return (
     <div className="flex flex-col gap-4">
-      {items.map((item: any, idx: number) => (
+      {data.items.map((item: any, idx: number) => (
         <Link key={idx} href={item.link}>
           {item.name}
         </Link>

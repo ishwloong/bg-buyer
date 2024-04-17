@@ -1,31 +1,20 @@
-import { TResponse, TThemeConfig } from "@/lib/types";
-import axios from "axios";
-import axiosInstance from "./axios";
+import http from "./http";
 
-export const getThemeConfig = async () => {
-  const res = await axiosInstance("bgp").get(
-    `/app/themes?store_id=${process.env.STORE_ID}`
-  );
-  return res.data;
-};
+export const getThemeConfig = () =>
+  http.get<any>(`/app/themes?store_id=${process.env.STORE_ID}`);
 
-export const getThemeMenu = async (menuId: string) => {
-  const res = await axiosInstance("bgp").get(
-    `/app/themes/menus/${menuId}?store_id=${process.env.STORE_ID}`
+export const getFeaturedCollection = (
+  id: string,
+  pageSize: number,
+  baseUrl: string = ""
+) =>
+  http.get<any>(
+    `/public/products?collection_id=all&page=1&page_size=8&is_aggrs=false`,
+    {
+      headers: { "X-Store-Domain": "store-check-shipping.30usd.com" },
+      baseUrl: baseUrl,
+    }
   );
-  return res.data;
-};
 
-export const getFeaturedCollection = async (
-  collection_id: string,
-  page_size: number,
-  page: number = 1,
-  is_aggrs: boolean = false
-) => {
-  // const params = { collection_id, page, page_size, is_aggrs };
-  const res = await axiosInstance("bgp").get(
-    `/public/products?collection_id=${collection_id}&page=${page}&page_size=${page_size}&is_aggrs=${is_aggrs}`
-    // { params }
-  );
-  return res.data;
-};
+export const getThemeMenu = async (menuId: string) =>
+  http.get<any>(`/app/themes/menus/${menuId}?store_id=${process.env.STORE_ID}`);

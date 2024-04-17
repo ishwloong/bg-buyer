@@ -16,7 +16,7 @@ const PromotionBox = ({ compConfig, themeSetting }: Props) => {
     >
       {children_items.map((item: any) => (
         <div
-          key={item.promotion_box_1}
+          key={item.id}
           className={cn(
             "flex gap-4",
             template_type === "promotion_box"
