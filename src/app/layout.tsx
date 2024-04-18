@@ -1,5 +1,10 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import "@/app/globals.css";
+import Footer from "@/components/theme-configs/footer/Footer";
+import Header from "@/components/theme-configs/header/Header";
+import { getThemeConfig } from "@/lib/api";
+import { getFontUrl, replaceUnderscoreWithDash } from "@/lib/utils";
+import { find, unescape } from "lodash";
 
 export const metadata = {
   title: "Next.js",
@@ -11,15 +16,69 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
+  const {
+    data,
+    data: {
+      object_config: {
+        root,
+        header: { announcement, header_bar },
+        theme_settings: { children_items },
+      },
+    },
+  } = await getThemeConfig();
+
+  const color = find(children_items, { id: "color" }).settings;
+
+  const typographyConfig = find(children_items, {
+    id: "typography",
+  }).children_items;
+
+  const {
+    settings: { font_url },
+  } = find(children_items, {
+    id: "typography",
+  });
+
+  const headingStyle = find(typographyConfig, {
+    id: "style_heading",
+  }).settings;
+
+  const bodyStyle = find(typographyConfig, { id: "style_body" }).settings;
+
+  const btnNLinkStyle = find(typographyConfig, {
+    id: "style_button_link",
+  }).settings;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=.|Outfit:400,500|&display=swap"
-        />
+        <link href={getFontUrl(font_url.value) ?? ""} rel="stylesheet" />
       </head>
-      <body style={{ background: "var(--body-bg-color)" }}>{children}</body>
+      <body>
+        <style
+          dangerouslySetInnerHTML={{ __html: replaceUnderscoreWithDash(root) }}
+        ></style>
+        <style>{`
+        :root {
+          --color-primary: ${color.primary_color.value};
+          --heading-text-color: ${color.heading_text_color.value};
+          --body-text-color: ${color.body_text_color.value};
+          --button-text-color: ${color.button_text_color.value};
+          --button-background-color: ${color.button_color.value};
+          --button-background-color-hover: ${color.button_color_hover.value};
+
+          --font-family-heading: ${unescape(headingStyle.font_family.value)};
+          --font-size-heading: ${headingStyle.font_base_size.value}px;
+          --font-variant-heading: ${headingStyle.font_variant.value};
+          --font-family-body: ${unescape(bodyStyle.font_family.value)};
+          --font-size-body: ${bodyStyle.font_base_size.value}px;
+          --font-family-button-link: ${btnNLinkStyle.font_family.value};
+        }
+        `}</style>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

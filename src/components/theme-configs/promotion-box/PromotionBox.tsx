@@ -5,8 +5,6 @@ type Props = { compConfig: any; themeSetting: any };
 
 const PromotionBox = ({ compConfig, themeSetting }: Props) => {
   const { settings, children_items, template_type } = compConfig;
-  console.log(settings);
-
   return (
     <div
       className={cn(

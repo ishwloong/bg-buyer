@@ -88,7 +88,7 @@ const FeaturedCollection = async ({ compConfig, themeSetting }: Props) => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <span className="group-hover:text-[color:var(--primary)] transition-all truncate">
+              <span className="group-hover:text-[color:var(--color-primary)] transition-all truncate">
                 {item.title}
               </span>
               <h4 className="flex gap-2">

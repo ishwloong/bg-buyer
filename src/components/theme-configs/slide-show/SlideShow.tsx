@@ -15,7 +15,6 @@ type Props = { compConfig: any; themeSetting: any };
 
 const SlideShow = async ({ compConfig, themeSetting }: Props) => {
   const { settings, children_items } = compConfig;
-  console.log(children_items);
 
   return (
     <Carousel
@@ -54,11 +53,13 @@ const SlideShow = async ({ compConfig, themeSetting }: Props) => {
                   }}
                 ></div>
               </div>
-              <Button className="w-fit">
-                <Link href={item.settings.item_btn_link.value}>
-                  {item.settings.item_btn_label.value}
-                </Link>
-              </Button>
+              {item.settings.item_btn_label.value && (
+                <Button className="w-fit">
+                  <Link href={item.settings.item_btn_link.value}>
+                    {item.settings.item_btn_label.value}
+                  </Link>
+                </Button>
+              )}
             </div>
             {/* <Image
               src={item.settings.item_image_url.value}

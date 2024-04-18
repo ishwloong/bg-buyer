@@ -10,8 +10,15 @@ import {
 } from "@/components/ui/sheet";
 import { getThemeConfig, getThemeMenu } from "@/lib/api";
 import { cn } from "@/lib/utils";
+import Announcement from "./Announcement";
+import HeaderMinimal from "./HeaderMinimal";
+import useWindowSize from "@/lib/hooks/useWindowSize";
+import HeaderInline from "./HeaderInline";
+import HeaderRich from "./HeaderRich";
 
 const Header = async () => {
+  const windowSize = { width: 1980 }; //useWindowSize();
+
   const {
     data: {
       object_config: {
@@ -26,38 +33,24 @@ const Header = async () => {
     data: { items },
   } = await getThemeMenu(settings.header_navigation_items.value);
 
-  const navigationEl = (
-    <div
-      style={{
-        background: settings.menu_bg.value,
-        justifyContent:
-          template_type === "bg_header_bar_rich"
-            ? "center"
-            : settings.header_content_alignment.value,
-      }}
-      className={cn(
-        "w-full max-w-[1320px] m-auto flex flex-1",
-        settings.header_center_logo.value &&
-          template_type === "bg_header_bar_rich"
-          ? "order-1"
-          : "order-2"
+  return (
+    <>
+      <style>{`
+        :root {
+          --header-background: ${settings.header_bg.value};
+          --color-main-menu-background: ${settings.menu_bg.value};
+          --color-main-menu-text: ${settings.txt_color.value};
+        }
+      `}</style>
+      <Announcement />
+      {(template_type === "bg_header_bar_minimal" || windowSize.width < 1024) &&
+      visible ? (
+        <HeaderMinimal />
+      ) : (
+        (template_type === "bg_header_bar_rich" && <HeaderRich />) ||
+        (template_type === "bg_header_bar_inline" && <HeaderInline />)
       )}
-    >
-      {items?.map((item: any, idx: number) => (
-        <div
-          key={idx}
-          className="p-4 cursor-pointer text-lg hover:text-[color:var(--primary)]"
-        >
-          <Link href={item.link}>{item.name}</Link>
-        </div>
-      ))}
-    </div>
-  );
-
-  if (visible) {
-    return (
-      <>
-        {template_type === "bg_header_bar_minimal" ? (
+      {/* {template_type === "bg_header_bar_minimal" ? (
           ""
         ) : (
           <div
@@ -131,11 +124,11 @@ const Header = async () => {
                 navigationEl
               )}
               <div className="flex flex-1 justify-end order-3 gap-4">
-                <User className="hover:text-[color:var(--primary)] transition-all cursor-pointer" />
+                <User className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
                 {template_type === "bg_header_bar_inline" && (
                   <Sheet>
                     <SheetTrigger asChild>
-                      <Search className="hover:text-[color:var(--primary)] transition-all cursor-pointer" />
+                      <Search className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
                     </SheetTrigger>
                     <SheetContent
                       side="top"
@@ -156,16 +149,15 @@ const Header = async () => {
                     </SheetContent>
                   </Sheet>
                 )}
-                <ShoppingBag className="hover:text-[color:var(--primary)] transition-all cursor-pointer" />
+                <ShoppingBag className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
               </div>
             </div>
 
             {template_type === "bg_header_bar_rich" && navigationEl}
           </div>
-        )}
-      </>
-    );
-  } else return <></>;
+        )} */}
+    </>
+  );
 };
 
 export default Header;

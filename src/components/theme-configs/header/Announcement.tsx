@@ -10,23 +10,28 @@ const Announcement = async () => {
       },
     },
   } = await getThemeConfig();
-  
+
   if (visible) {
     return (
-      <div
-        id={id}
-        className="h-10 text-center p-2 text-sm"
-        style={{
-          background: settings.announcement_background.value,
-          color: settings.announcement_text_color.value,
-        }}
-      >
+      <>
+        <style>{`
+        :root {
+          --color-announcement-bar-background: ${settings.announcement_background.value};
+          --color-announcement-bar-text: ${settings.announcement_text_color.value};
+        }
+
+        * {
+          font-family: Barlow
+        }
+        `}</style>
         <div
+          id={id}
+          className="announcement-bar"
           dangerouslySetInnerHTML={{
             __html: settings.announcement_content.value,
           }}
         ></div>
-      </div>
+      </>
     );
   } else return <></>;
 };

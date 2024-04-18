@@ -84,7 +84,7 @@ const CollectionList = ({ compConfig, themeSetting }: Props) => {
             </div>
 
             {item.settings.collection_item_name.value && (
-              <h3 className="font-medium text-2xl group-hover:text-[color:var(--primary)] transition-all">
+              <h3 className="font-medium text-2xl group-hover:text-[color:var(--color-primary)] transition-all">
                 {item.settings.collection_item_name.value}
               </h3>
             )}
