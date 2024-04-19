@@ -19,10 +19,6 @@ const Announcement = async () => {
           --color-announcement-bar-background: ${settings.announcement_background.value};
           --color-announcement-bar-text: ${settings.announcement_text_color.value};
         }
-
-        * {
-          font-family: Barlow
-        }
         `}</style>
         <div
           id={id}

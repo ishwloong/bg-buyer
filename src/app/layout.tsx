@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import "@/app/globals.css";
+import "@/app/styles/component.css";
 import Footer from "@/components/theme-configs/footer/Footer";
 import Header from "@/components/theme-configs/header/Header";
 import { getThemeConfig } from "@/lib/api";
@@ -73,6 +74,8 @@ export default async function Layout({
           --font-family-body: ${unescape(bodyStyle.font_family.value)};
           --font-size-body: ${bodyStyle.font_base_size.value}px;
           --font-family-button-link: ${btnNLinkStyle.font_family.value};
+          --font-variant-button-link: ${btnNLinkStyle.font_variant.value};
+          --font-size-button-link: ${btnNLinkStyle.font_base_size.value}px;
         }
         `}</style>
         <Header />

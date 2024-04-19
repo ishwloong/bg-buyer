@@ -9,7 +9,7 @@ const PromotionBox = ({ compConfig, themeSetting }: Props) => {
     <div
       className={cn(
         !settings.full_width.value ? "max-w-[1320px] m-auto" : "px-20",
-        "w-full relative flex gap-6 items-center justify-center bg-[#f8f8f8] promotion_dynamic"
+        "w-full relative flex gap-6 items-center justify-around bg-[#f8f8f8] promotion_dynamic mb-20"
       )}
     >
       {children_items.map((item: any) => (

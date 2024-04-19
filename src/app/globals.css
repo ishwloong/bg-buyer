@@ -3045,7 +3045,7 @@ textarea,
 textarea.form-control,
 .input-group-lg>.form-control {
   font-size: var(--font-size-body);
-  border-radius: var(--font-size-body);
+  border-radius: var(--border-radius);
 }
 
 .form-select:focus,
@@ -3133,7 +3133,7 @@ textarea.form-control,
 .header_nav .list-group-item .dropdown-menu {
   padding: 0.5rem 0;
   display: block !important;
-  border-radius: var(--font-size-body);
+  border-radius: var(--border-radius);
   border: 1px solid #f8f8f8;
   top: 100%;
   visibility: hidden;
@@ -3467,7 +3467,7 @@ color: var(--body-text-color);
   grid-area: search;
   margin: 0 auto;
   max-width: 400px;
-  border-radius: var(--font-size-body);
+  border-radius: var(--border-radius);
 }
 
 .bg_header_bar_rich .header_main .header_search .form-control:focus {
@@ -3618,7 +3618,7 @@ color: var(--body-text-color);
 }
 
 .fc_image_product {
-  border-radius: var(--font-size-body);
+  border-radius: var(--border-radius);
   border: 1px solid #e4e2e2;
   overflow: hidden;
   background-position: center;
@@ -3786,7 +3786,7 @@ color: var(--body-text-color);
   font: var(--font-variant-button-link) var(--font-size-button-link) var(--font-family-button-link);
   text-decoration: var(--font-text-decoration-button-link);
   text-transform: var(--text-transform-button-link);
-  border-radius: var(--font-size-body);
+  border-radius: var(--border-radius);
   padding: .75rem 1.5625rem;
   line-height: 1.4;
   transition: all 0.3s linear;
@@ -3844,8 +3844,8 @@ a svg {
   }
 
   .btn-bg-outline-primary:hover {
-    border-color: var(--button-background-color_hover);
-    background-color: var(--button-background-color_hover);
+    border-color: var(--button-background-color-hover);
+    background-color: var(--button-background-color-hover);
     color: var(--color-text-button);
   }
 }
@@ -3856,7 +3856,7 @@ a svg {
 }
 
 .btn-bg-primary:hover {
-  background-color: var(--button-background-color_hover);
+  background-color: var(--button-background-color-hover);
   color: var(--color-text-button);
 }
 
@@ -3869,8 +3869,8 @@ a svg {
 
 .btn-bg-secondary:hover {
   background-color: transparent;
-  color: var(--button-background-color_hover);
-  border-color: var(--button-background-color_hover);
+  color: var(--button-background-color-hover);
+  border-color: var(--button-background-color-hover);
 }
 
 .btn-paypal {
@@ -4047,7 +4047,7 @@ a svg {
 }
 
 .custom-rounded {
-  border-radius: var(--font-size-body);
+  border-radius: var(--border-radius);
 }
 
 .breadcrumb {
@@ -4109,7 +4109,7 @@ textarea.form-control:focus {
   width: 70px;
   height: 40px;
   border: 1px solid #CFD8DC;
-  border-radius: var(--font-size-body);
+  border-radius: var(--border-radius);
   margin-left: 2px;
   margin-right: 2px;
 }
@@ -4128,7 +4128,7 @@ textarea.form-control:focus {
   text-align: center;
   background: transparent;
   border: 1px solid #CFD8DC;
-  border-radius: var(--font-size-body);
+  border-radius: var(--border-radius);
   font-size: 1.5rem;
 }
 
@@ -4355,7 +4355,7 @@ textarea.form-control:focus {
 .preferences .dropdown-toggle {
   padding: 10px;
   border: 1px solid #cfd8dc;
-  border-radius: var(--font-size-body);
+  border-radius: var(--border-radius);
   background-color: var(--body-bg-color);
 }
 
@@ -4738,7 +4738,7 @@ textarea.form-control:focus {
 
 /* Carousel */
 .slide_bg_rounded {
-  border-radius: var(--font-size-body);
+  border-radius: var(--border-radius);
 }
 
 .slideshow-item {
@@ -5175,7 +5175,7 @@ textarea.form-control:focus {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--color-primary);
-  border-radius: var(--font-size-body);
+  border-radius: var(--border-radius);
 }
 
 .clc__row-heading:after {

@@ -2,34 +2,55 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { ComponentSettingType } from "@/types/comp-settings";
 
-type Props = { compConfig: any; themeSetting: any };
+type Props = {
+  collection_heading: ComponentSettingType;
+  collection_desc: ComponentSettingType;
+  collection_link: ComponentSettingType;
+  btn_as_text_link: ComponentSettingType;
+  collection_layout: ComponentSettingType;
+  collection_ratio: ComponentSettingType;
+  collection_per_row: ComponentSettingType;
+  full_width: ComponentSettingType;
+  heading_centered: ComponentSettingType;
+  children_items: any;
+};
 
-const CollectionList = ({ compConfig, themeSetting }: Props) => {
-  const { settings, children_items } = compConfig;
-
+const CollectionList = ({
+  collection_heading,
+  collection_desc,
+  collection_link,
+  btn_as_text_link,
+  collection_layout,
+  collection_ratio,
+  collection_per_row,
+  full_width,
+  heading_centered,
+  children_items,
+}: Props) => {
   return (
     <div
       className={cn(
-        !settings.full_width.value && "max-w-[1320px] m-auto",
-        "w-full relative flex flex-col gap-8 items-center"
+        !full_width.value && "max-w-[1320px] m-auto",
+        "w-full relative flex flex-col gap-8 items-center mb-20"
       )}
     >
-      {settings.collection_heading.value && (
+      {collection_heading.value && (
         <div
           className={cn(
             "flex flex-col gap-2 w-full",
-            settings.heading_centered.value && "items-center"
+            heading_centered.value && "items-center"
           )}
         >
           <h2 className="text-[32px] leading-[48px] font-heading">
-            {settings.collection_heading.value}
+            {collection_heading.value}
           </h2>
 
           <div
             className={cn(
               "flex w-full",
-              settings.heading_centered.value
+              heading_centered.value
                 ? "justify-center"
                 : "justify-between items-end"
             )}
@@ -37,27 +58,24 @@ const CollectionList = ({ compConfig, themeSetting }: Props) => {
             <div
               className={cn(
                 "max-w-[984px]",
-                settings.heading_centered.value && "text-center"
+                heading_centered.value && "text-center"
               )}
               dangerouslySetInnerHTML={{
-                __html: settings.collection_desc.value,
+                __html: collection_desc.value,
               }}
             ></div>
-            {settings.collection_link.value &&
-              !settings.heading_centered.value && (
-                <Button
-                  variant={settings.btn_as_text_link.value ? "link" : "default"}
-                >
-                  {settings.collection_link.value}
-                </Button>
-              )}
+            {collection_link.value && !heading_centered.value && (
+              <Button variant={btn_as_text_link.value ? "link" : "default"}>
+                {collection_link.value}
+              </Button>
+            )}
           </div>
         </div>
       )}
 
       <div
         style={{
-          gridTemplateColumns: `repeat(${settings.collection_per_row.value}, minmax(0, 1fr))`,
+          gridTemplateColumns: `repeat(${collection_per_row.value}, minmax(0, 1fr))`,
         }}
         className="md:grid flex flex-col gap-6 w-full"
       >
@@ -92,12 +110,12 @@ const CollectionList = ({ compConfig, themeSetting }: Props) => {
         ))}
       </div>
 
-      {settings.collection_link.value && settings.heading_centered.value && (
+      {collection_link.value && heading_centered.value && (
         <Button
           className="w-fit"
-          variant={settings.btn_as_text_link.value ? "link" : "default"}
+          variant={btn_as_text_link.value ? "link" : "default"}
         >
-          {settings.collection_link.value}
+          {collection_link.value}
         </Button>
       )}
     </div>

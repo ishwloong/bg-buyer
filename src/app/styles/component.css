@@ -1,0 +1,17 @@
+.btn-primary {
+    @apply rounded-[var(--border-radius)] bg-[var(--color-primary)] hover:bg-[var(--button-background-color-hover)];
+}
+
+.input-base {
+    @apply flex-1 py-2 px-4 placeholder:text-[#363636] bg-[#f0f0f0] h-10 rounded-[var(--border-radius)] border-[var(--color-primary)] focus-visible:ring-[var(--color-primary)]
+}
+
+.content-banner h2 {
+    line-height: 1.25;
+    @apply mb-2
+}
+
+.content-banner p {
+    line-height: 1.5;
+    @apply mb-4
+}
