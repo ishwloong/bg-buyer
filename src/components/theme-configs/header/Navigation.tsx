@@ -21,22 +21,24 @@ const Navigation = async () => {
     <div
       id={settings.header_navigation_items.id}
       style={{
-        background: settings.menu_bg.value,
         justifyContent:
           template_type === "bg_header_bar_rich"
             ? "center"
             : settings.header_content_alignment.value,
       }}
       className={cn(
-        "w-full max-w-[1320px] m-auto flex flex-1 header_rich_menu",
+        "w-full max-w-[1320px] m-auto flex flex-1 gap-4",
         settings.header_center_logo.value &&
           template_type === "bg_header_bar_rich"
-          ? "order-1"
+          ? "order-1 bg-[var(--bg-main-menu)]"
           : "order-2"
       )}
     >
       {items?.map((item: any, idx: number) => (
-        <div key={idx} className="cursor-pointer list-group-item">
+        <div
+          key={idx}
+          className="cursor-pointer list-group-item p-2 hover:text-[color:var(--bgs-primary)] text-lg"
+        >
           <Link href={item.link} className={cn("header_nav")}>
             {item.name}
           </Link>

@@ -12,7 +12,11 @@ const FooterMenu = async ({ menuId }: Props) => {
   return (
     <div className="flex flex-col gap-4">
       {data.items.map((item: any, idx: number) => (
-        <Link key={idx} href={item.link}>
+        <Link
+          key={idx}
+          href={item.link}
+          className="hover:text-[var(--bgs-primary)] transition-all"
+        >
           {item.name}
         </Link>
       ))}

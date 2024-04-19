@@ -14,10 +14,21 @@ export function getFontUrl(inputString: string) {
   }
 }
 
-export function replaceUnderscoreWithDash(cssString: string) {
-  return cssString.replace(/:root{(.*?)}/s, function (p1) {
-    return p1.replace(/(--[\w-]+):/g, function (p1) {
-      return p1.replace(/_/g, "-");
-    });
+export function convertCssVariables(cssString: string) {
+  // Hàm này thực hiện việc thay thế dấu gạch dưới (_) bằng dấu gạch ngang (-) trong các biến CSS
+  function replaceUnderscores(p1: string) {
+    return p1.replace(/_/g, "-");
+  }
+
+  // Thay đổi tất cả các biến CSS trong :root
+  cssString = cssString.replace(/:root{(.*?)}/s, function (rootContent) {
+    return rootContent.replace(/(--[\w-]+):/g, replaceUnderscores);
   });
+
+  // Thay đổi tất cả các biến CSS được sử dụng trong var(--variables_css)
+  cssString = cssString.replace(/var\((--[\w-]+)\)/g, function (match, p1) {
+    return "var(" + p1.replace(/_/g, "-") + ")";
+  });
+
+  return cssString;
 }

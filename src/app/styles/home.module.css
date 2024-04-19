@@ -22,7 +22,7 @@
 
 .collection-content:hover~.collection_name *,
 .collection_name *:hover {
-    color: var(--color-primary);
+    color: var(--bgs-primary);
 }
 
 .item-grid-box:hover {

@@ -5,9 +5,9 @@ import PromotionBox from "@/components/theme-configs/promotion-box/PromotionBox"
 import RichText from "@/components/theme-configs/rich-text/RichText";
 import SlideShow from "@/components/theme-configs/slide-show/SlideShow";
 import { getThemeConfig } from "@/lib/api";
+import { ComponentType } from "@/types/comp-type";
 import { find } from "lodash";
 import React from "react";
-// import "@/app/styles/home.module.css";
 
 const HomePage = async () => {
   const {
@@ -17,7 +17,7 @@ const HomePage = async () => {
     },
   } = await getThemeConfig();
 
-  const pageConfig = pages.find((page) => page.page_id === "bg_home_page");
+  const pageConfig = find(pages, { page_id: "bg_home_page" });
 
   const getComponentSettings = (id: string) => {
     return find(pageConfig.components, { id: id }).settings;
@@ -30,7 +30,7 @@ const HomePage = async () => {
   return (
     <div className="flex flex-col px-4 lg:px-0">
       {pageConfig?.components.map(
-        (item) =>
+        (item: ComponentType) =>
           item.visible &&
           ((item.id.includes("home_slideshow") && (
             <SlideShow

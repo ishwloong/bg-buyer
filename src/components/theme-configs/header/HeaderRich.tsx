@@ -70,9 +70,9 @@ const HeaderRich = async () => {
           </div>
         </form>
         <div className="flex flex-1 justify-end order-3 gap-4">
-          <User className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
+          <User className="hover:text-[color:var(--bgs-primary)] transition-all cursor-pointer" />
 
-          <ShoppingBag className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
+          <ShoppingBag className="hover:text-[color:var(--bgs-primary)] transition-all cursor-pointer" />
         </div>
       </div>
 

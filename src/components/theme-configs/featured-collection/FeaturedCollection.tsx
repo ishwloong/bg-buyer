@@ -50,7 +50,7 @@ const FeaturedCollection = async ({
           heading_centered?.value && "items-center"
         )}
       >
-        <h2 className="font-heading text-[32px] leading-[48px]">
+        <h2 className="font-heading font-wHeading">
           {fc_heading?.value}
         </h2>
         <div

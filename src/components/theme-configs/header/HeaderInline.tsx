@@ -24,18 +24,14 @@ const HeaderInline = async () => {
   return (
     <div
       className={cn(
-        "header",
-        settings.fixed_header.value && "sticky-top",
+        "bg-[var(--bg-header)] z-10",
+        settings.fixed_header.value && "sticky top-0",
         template_type
       )}
     >
       <div
         id={id}
-        className="header_main w-full max-w-[1320px] m-auto"
-        style={{
-          position: "relative",
-          color: settings.txt_color.value,
-        }}
+        className="w-full max-w-[1320px] m-auto py-4 h-[112px] relative flex items-center gap-5 text-[--color-main-menu"
       >
         <div
           className={cn(
@@ -45,7 +41,7 @@ const HeaderInline = async () => {
         >
           <Image
             className={cn(
-              "!relative object-contain cursor-pointer",
+              "!relative object-contain cursor-pointer w-auto h-full max-w-[200px] max-h-[80px]",
               settings.header_center_logo.value && "order-1"
             )}
             src={settings.header_logo_url.value || ""}
@@ -53,15 +49,14 @@ const HeaderInline = async () => {
             width={0}
             height={0}
             sizes="100vw"
-            style={{ width: "auto", height: "100%" }}
           />
         </div>
         <Navigation />
-        <div className="flex flex-1 justify-end order-3 gap-4">
-          <User className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
+        <div className="flex flex-1 justify-end order-3 gap-4 p-2">
+          <User className="hover:text-[color:var(--bgs-primary)] transition-all cursor-pointer" />
           <Sheet>
             <SheetTrigger asChild>
-              <Search className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
+              <Search className="hover:text-[color:var(--bgs-primary)] transition-all cursor-pointer" />
             </SheetTrigger>
             <SheetContent
               side="top"
@@ -81,7 +76,7 @@ const HeaderInline = async () => {
               </div>
             </SheetContent>
           </Sheet>
-          <ShoppingBag className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
+          <ShoppingBag className="hover:text-[color:var(--bgs-primary)] transition-all cursor-pointer" />
         </div>
       </div>
     </div>

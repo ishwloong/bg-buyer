@@ -3,6 +3,12 @@ import clsx from "clsx";
 import Image from "next/image";
 import FooterMenu from "./FooterMenu";
 import { getThemeConfig } from "@/lib/api";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const Footer = async () => {
   const {
@@ -30,35 +36,39 @@ const Footer = async () => {
       }}
     >
       <div className="w-full max-w-[1320px] m-auto py-12">
-        <div className="flex gap-[52px] py-4">
+        <div className="flex flex-col md:flex-row gap-[52px] py-4">
           {footerSiteMap.map((item) => (
-            <div
-              key={item.id}
-              className={clsx(
-                "flex flex-col gap-5",
-                item.settings.width.value &&
-                  `w-full max-w-[${item.settings.width.value}]`
-              )}
-            >
-              <h4 className="text-xl font-bold">{item.heading}</h4>
+            <div key={item.id} className="flex flex-1">
+              <div
+                className={clsx(
+                  "flex-col gap-5 hidden md:flex md:flex-wrap",
+                  item.settings.width.value &&
+                    `w-full max-w-[${item.settings.width.value}]`
+                )}
+              >
+                <h4 className="text-xl font-bold">{item.heading}</h4>
 
-              {!item.id.includes("menu") && (
-                <div
-                  className="flex flex-col gap-4"
-                  dangerouslySetInnerHTML={{
-                    __html:
-                      item.settings.content?.value?.replaceAll("<p></p>", "") ||
-                      item.settings.newsletter_desc?.value?.replaceAll(
-                        "<p></p>",
-                        ""
-                      ) ||
-                      "",
-                  }}
-                ></div>
-              )}
-              {item.id.includes("menu") && (
-                <FooterMenu menuId={item.settings.menu.value} />
-              )}
+                {!item.id.includes("menu") && (
+                  <div
+                    className="flex flex-col gap-4"
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        item.settings.content?.value?.replaceAll(
+                          "<p></p>",
+                          ""
+                        ) ||
+                        item.settings.newsletter_desc?.value?.replaceAll(
+                          "<p></p>",
+                          ""
+                        ) ||
+                        "",
+                    }}
+                  ></div>
+                )}
+                {item.id.includes("menu") && (
+                  <FooterMenu menuId={item.settings.menu.value} />
+                )}
+              </div>
             </div>
           ))}
         </div>

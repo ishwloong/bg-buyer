@@ -11,7 +11,7 @@ const FcProductCard = ({ item, fc_ratio }: Props) => {
       className="w-full flex flex-col gap-4 items-stretch cursor-pointer group"
     >
       <div className={cn("w-full overflow-hidden border relative")}>
-        <Heart className="absolute top-4 right-4 hover:text-[color:var(--color-primary)] z-10" />
+        <Heart className="absolute top-4 right-4 hover:text-[color:var(--bgs-primary)] z-10" />
         <Image
           className={cn(
             "group-hover:scale-125 transition-all duration-1000",
@@ -27,7 +27,7 @@ const FcProductCard = ({ item, fc_ratio }: Props) => {
       </div>
 
       <div className="flex flex-col gap-2">
-        <span className="group-hover:text-[color:var(--color-primary)] transition-all truncate">
+        <span className="group-hover:text-[color:var(--bgs-primary)] transition-all truncate">
           {item.title}
         </span>
         <h4 className="flex gap-2">

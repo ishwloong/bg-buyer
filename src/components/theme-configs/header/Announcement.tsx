@@ -16,13 +16,13 @@ const Announcement = async () => {
       <>
         <style>{`
         :root {
-          --color-announcement-bar-background: ${settings.announcement_background.value};
-          --color-announcement-bar-text: ${settings.announcement_text_color.value};
+          --announcement-bg-color: ${settings.announcement_background.value};
+          --announcement-text-color: ${settings.announcement_text_color.value};
         }
         `}</style>
         <div
           id={id}
-          className="announcement-bar"
+          className="w-full h-10 bg-[var(--announcement-bg-color)] text-[color:var(--announcement-text-color)] text-center p-2 text-sm"
           dangerouslySetInnerHTML={{
             __html: settings.announcement_content.value,
           }}

@@ -43,7 +43,7 @@ const CollectionList = ({
             heading_centered.value && "items-center"
           )}
         >
-          <h2 className="text-[32px] leading-[48px] font-heading">
+          <h2 className="font-heading font-wHeading">
             {collection_heading.value}
           </h2>
 
@@ -102,7 +102,7 @@ const CollectionList = ({
             </div>
 
             {item.settings.collection_item_name.value && (
-              <h3 className="font-medium text-2xl group-hover:text-[color:var(--color-primary)] transition-all">
+              <h3 className="font-medium text-2xl group-hover:text-[color:var(--bgs-primary)] transition-all">
                 {item.settings.collection_item_name.value}
               </h3>
             )}

@@ -37,9 +37,9 @@ const Header = async () => {
     <>
       <style>{`
         :root {
-          --header-background: ${settings.header_bg.value};
-          --color-main-menu-background: ${settings.menu_bg.value};
-          --color-main-menu-text: ${settings.txt_color.value};
+          --bg-header: ${settings.header_bg.value};
+          --bg-main-menu: ${settings.menu_bg.value};
+          --color-main-menu: ${settings.txt_color.value};
         }
       `}</style>
       <Announcement />
@@ -124,11 +124,11 @@ const Header = async () => {
                 navigationEl
               )}
               <div className="flex flex-1 justify-end order-3 gap-4">
-                <User className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
+                <User className="hover:text-[color:var(--bgs-primary)] transition-all cursor-pointer" />
                 {template_type === "bg_header_bar_inline" && (
                   <Sheet>
                     <SheetTrigger asChild>
-                      <Search className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
+                      <Search className="hover:text-[color:var(--bgs-primary)] transition-all cursor-pointer" />
                     </SheetTrigger>
                     <SheetContent
                       side="top"
@@ -149,7 +149,7 @@ const Header = async () => {
                     </SheetContent>
                   </Sheet>
                 )}
-                <ShoppingBag className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
+                <ShoppingBag className="hover:text-[color:var(--bgs-primary)] transition-all cursor-pointer" />
               </div>
             </div>
 
