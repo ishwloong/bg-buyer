@@ -1,5 +1,7 @@
 import CollectionList from "@/components/theme-configs/collection-list/CollectionList";
 import FeaturedCollection from "@/components/theme-configs/featured-collection/FeaturedCollection";
+import Gallery from "@/components/theme-configs/gallery/Gallery";
+import ImgNText from "@/components/theme-configs/img-n-text/ImgNText";
 import Newsletter from "@/components/theme-configs/newsletter/Newsletter";
 import PromotionBox from "@/components/theme-configs/promotion-box/PromotionBox";
 import RichText from "@/components/theme-configs/rich-text/RichText";
@@ -35,8 +37,8 @@ const HomePage = async () => {
           ((item.id.includes("home_slideshow") && (
             <SlideShow
               key={item.id}
-              compConfig={item}
-              themeSetting={theme_settings}
+              {...getComponentSettings(item.id)}
+              children_items={getChildrenItems(item.id)}
             />
           )) ||
             (item.id.includes("home_collection") && (
@@ -57,6 +59,7 @@ const HomePage = async () => {
               <FeaturedCollection
                 key={item.id}
                 {...getComponentSettings(item.id)}
+                template_type={item.template_type}
               />
             )) ||
             (item.id.includes("home_rich_text") && (
@@ -64,6 +67,24 @@ const HomePage = async () => {
             )) ||
             (item.id.includes("h_esu") && (
               <Newsletter key={item.id} {...getComponentSettings(item.id)} />
+            )) ||
+            (item.id.includes("home_image_n_text") && (
+              <ImgNText
+                key={item.id}
+                {...getComponentSettings(item.id)}
+                template_type={item.template_type}
+              />
+            )) ||
+            (item.id.includes("home_gallery") && (
+              <Gallery
+                key={item.id}
+                {...getComponentSettings(item.id)}
+                children_items={item.children_items}
+                template_type={item.template_type}
+              />
+            )) ||
+            (item.id.includes("home_gap_section") && (
+              <div className="h-5"></div>
             )))
       )}
     </div>

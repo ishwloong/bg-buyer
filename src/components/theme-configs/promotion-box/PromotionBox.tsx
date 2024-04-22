@@ -9,7 +9,7 @@ const PromotionBox = ({ compConfig, themeSetting }: Props) => {
     <div
       className={cn(
         !settings.full_width.value ? "max-w-[1320px] m-auto" : "px-20",
-        "w-full relative flex gap-6 items-center justify-around bg-[var(--color-promotion-background)] promotion_dynamic"
+        "w-full relative flex gap-6 items-center justify-around bg-[var(--color-promotion-background)] promotion_dynamic mb-block-default"
       )}
     >
       <div className="flex flex-1">

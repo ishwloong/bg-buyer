@@ -5,6 +5,8 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { ComponentSettingType } from "@/types/comp-settings";
 import FcProductCard from "./FcProductCard";
+import FcSlideShow from "./FcSlideShow";
+import { CarouselItem } from "@/components/ui/carousel";
 
 type Props = {
   template_type: "fc_grid" | "fc_slider";
@@ -43,16 +45,14 @@ const FeaturedCollection = async ({
   );
 
   return (
-    <div className="max-w-[1320px] m-auto w-full relative flex flex-col gap-8 items-center mb-20">
+    <div className="max-w-[1320px] m-auto w-full relative flex flex-col gap-8 items-center mb-block-default">
       <div
         className={clsx(
           "flex flex-col gap-2 w-full",
           heading_centered?.value && "items-center"
         )}
       >
-        <h2 className="font-heading font-wHeading">
-          {fc_heading?.value}
-        </h2>
+        <h2 className="font-heading font-wHeading">{fc_heading?.value}</h2>
         <div
           className={clsx(
             "flex w-full",
@@ -93,26 +93,24 @@ const FeaturedCollection = async ({
               key={item.id}
               item={item}
               fc_ratio={fc_ratio?.value as string}
+              btn_product={btn_product?.value as string}
             />
           ))}
         </div>
       )}
 
       {template_type === "fc_slider" && (
-        <div
-          style={{
-            gridTemplateColumns: `repeat(${fc_product_per_row?.value}, minmax(0, 1fr))`,
-          }}
-          className="md:grid flex flex-col gap-6"
-        >
+        <FcSlideShow>
           {result.map((item: any) => (
-            <FcProductCard
-              key={item.id}
-              item={item}
-              fc_ratio={fc_ratio?.value as string}
-            />
+            <CarouselItem key={item.id} className="basis-1/4">
+              <FcProductCard
+                item={item}
+                fc_ratio={fc_ratio?.value as string}
+                btn_product={btn_product?.value as string}
+              />
+            </CarouselItem>
           ))}
-        </div>
+        </FcSlideShow>
       )}
 
       {fc_btn_as_link?.value && heading_centered?.value && (

@@ -24,7 +24,7 @@ const HeaderInline = async () => {
   return (
     <div
       className={cn(
-        "bg-[var(--bg-header)] z-10",
+        "bg-[var(--header-background)] z-20",
         settings.fixed_header.value && "sticky top-0",
         template_type
       )}
@@ -53,10 +53,10 @@ const HeaderInline = async () => {
         </div>
         <Navigation />
         <div className="flex flex-1 justify-end order-3 gap-4 p-2">
-          <User className="hover:text-[color:var(--bgs-primary)] transition-all cursor-pointer" />
+          <User className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
           <Sheet>
             <SheetTrigger asChild>
-              <Search className="hover:text-[color:var(--bgs-primary)] transition-all cursor-pointer" />
+              <Search className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
             </SheetTrigger>
             <SheetContent
               side="top"
@@ -76,7 +76,7 @@ const HeaderInline = async () => {
               </div>
             </SheetContent>
           </Sheet>
-          <ShoppingBag className="hover:text-[color:var(--bgs-primary)] transition-all cursor-pointer" />
+          <ShoppingBag className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
         </div>
       </div>
     </div>

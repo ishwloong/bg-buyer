@@ -15,7 +15,7 @@ const FooterMenu = async ({ menuId }: Props) => {
         <Link
           key={idx}
           href={item.link}
-          className="hover:text-[var(--bgs-primary)] transition-all"
+          className="hover:text-[var(--color-primary)] transition-all"
         >
           {item.name}
         </Link>

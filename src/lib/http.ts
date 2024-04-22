@@ -39,9 +39,9 @@ const request = async <Response>(
   const payload: Response = await res.json();
   const data = { status: res.status, payload };
 
-  if (!res.ok) {
-    return { data: undefined };
-  }
+  // if (!res.ok) {
+  //   return { data: undefined };
+  // }
   return data.payload;
 };
 

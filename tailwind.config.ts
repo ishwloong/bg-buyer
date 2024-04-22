@@ -21,16 +21,17 @@ const config = {
       fontWeight: {
         wBody: "var(--font-variant-body)",
         wHeading: "var(--font-variant-heading)",
-        wBtnLink: "var(--font-variant-btn-link)",
+        wBtnLink: "var(--font-variant-button-link)",
       },
       fontFamily: {
-        body: ["var(--font-body)"],
-        heading: ["var(--font-heading)"],
+        body: ["var(--font-family-body)"],
+        heading: ["var(--font-family-heading)"],
       },
       fontSize: {
         xs: ["0.75rem", "0.9375rem"],
         sm: ["0.875rem", "1.25rem"],
         base: ["var(--font-size-body)", "1.5rem"],
+        sHeading: ["var(--font-size-heading)", "2.35rem"],
         h4: ["1.25rem", "1.875rem"],
         h3: ["1.5rem", "2rem"],
         h2: ["2rem", "3rem"],

@@ -29,7 +29,7 @@ const Newsletter = ({
       }}
       className={cn(
         "m-auto 2xl:px-10 2xl:py-6",
-        "w-full relative flex flex-col gap-8 items-center mb-20"
+        "w-full relative flex flex-col gap-8 items-center mb-block-default"
       )}
     >
       <div className="flex flex-col gap-10 p-6">

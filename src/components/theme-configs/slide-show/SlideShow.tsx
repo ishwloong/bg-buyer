@@ -10,17 +10,27 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { ComponentSettingType } from "@/types/comp-settings";
+import { ChildrenItemType } from "@/types/children-item";
 
-type Props = { compConfig: any; themeSetting: any };
+type Props = {
+  ratio_slides?: ComponentSettingType;
+  full_width?: ComponentSettingType;
+  btn_as_text?: ComponentSettingType;
+  children_items?: ChildrenItemType[];
+};
 
-const SlideShow = async ({ compConfig, themeSetting }: Props) => {
-  const { settings, children_items } = compConfig;
-
+const SlideShow = async ({
+  ratio_slides,
+  full_width,
+  btn_as_text,
+  children_items = [],
+}: Props) => {
   return (
     <Carousel
       className={cn(
-        !settings.full_width.value && "max-w-[1320px] m-auto",
-        "w-full relativ mb-20"
+        !full_width?.value && "max-w-[1320px] m-auto",
+        "w-full relativ mb-block-default"
       )}
       opts={{ loop: true }}
     >

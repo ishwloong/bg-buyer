@@ -33,7 +33,7 @@ const CollectionList = ({
     <div
       className={cn(
         !full_width.value && "max-w-[1320px] m-auto",
-        "w-full relative flex flex-col gap-8 items-center mb-20"
+        "w-full relative flex flex-col gap-8 items-center mb-block-default"
       )}
     >
       {collection_heading.value && (
@@ -91,7 +91,7 @@ const CollectionList = ({
               )}
             >
               <Image
-                className="group-hover:scale-125 transition-all duration-1000"
+                className="group-hover:scale-110 transition-all duration-1000"
                 src={item.settings.collection_image.value}
                 alt={item.settings.collection_image.id}
                 width={0}
@@ -102,7 +102,7 @@ const CollectionList = ({
             </div>
 
             {item.settings.collection_item_name.value && (
-              <h3 className="font-medium text-2xl group-hover:text-[color:var(--bgs-primary)] transition-all">
+              <h3 className="font-medium text-2xl group-hover:text-[color:var(--color-primary)] transition-all">
                 {item.settings.collection_item_name.value}
               </h3>
             )}
