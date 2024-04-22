@@ -47,19 +47,19 @@ const RichText = ({
           }}
         ></div>
       </div>
-      {btn_as_text_link?.value ? (
-        <Link
-          className="text-link-primary"
-          href={(btn_rich_text_link?.value as string) ?? "#"}
-        >
-          {btn_rich_text_label?.value}
-        </Link>
+      {btn_rich_text_label?.value ? (
+        btn_as_text_link?.value ? (
+          <Link
+            className="text-link-primary"
+            href={(btn_rich_text_link?.value as string) ?? "#"}
+          >
+            {btn_rich_text_label?.value}
+          </Link>
+        ) : (
+          <Button className="btn-primary">{btn_rich_text_label?.value}</Button>
+        )
       ) : (
-        <Button
-          className="btn-primary"
-        >
-          {btn_rich_text_label?.value}
-        </Button>
+        <></>
       )}
     </div>
   );

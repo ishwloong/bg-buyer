@@ -1,7 +1,5 @@
 import { headers } from "next/headers";
 import http from "./http";
-import { NavigationResponse } from "@/types/header";
-import { BgsResponse } from "@/types/respone-common";
 
 const host = headers().get("host");
 
@@ -33,7 +31,7 @@ export const getFeaturedCollection = async (
   );
 };
 
-export const getThemeMenu = async (menuId: string) =>
-  http.get<BgsResponse<NavigationResponse>>(
-    `/app/themes/menus/${menuId}?store_id=${process.env.STORE_ID}`
-  );
+export const getThemeMenu = async (menuId: string) => {
+  const { data } = await getDomainInfo();
+  return http.get<any>(`/app/themes/menus/${menuId}?store_id=${data.store_id}`);
+};
