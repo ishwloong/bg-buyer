@@ -28,6 +28,8 @@ export default async function Layout({
     },
   } = await getThemeConfig();
 
+  const customCss = find(children_items, { id: "customizing_css" }).settings;
+
   const color = find(children_items, { id: "color" }).settings;
 
   const typographyConfig = find(children_items, {
@@ -50,9 +52,6 @@ export default async function Layout({
     id: "style_button_link",
   }).settings;
 
-  console.log(header);
-  
-
   return (
     <html lang="en" suppressHydrationWarning className="text-base font-body">
       <head>
@@ -60,11 +59,16 @@ export default async function Layout({
       </head>
       <body>
         <style
+          dangerouslySetInnerHTML={{
+            __html: convertCssVariables(customCss?.style_dk?.value || ""),
+          }}
+        ></style>
+        <style
           dangerouslySetInnerHTML={{ __html: convertCssVariables(root) }}
         ></style>
         <style>{`
         :root {
-         --color-primary: ${color.primary_color.value};
+          --color-primary: ${color.primary_color.value};
           --heading-text-color: ${color.heading_text_color.value};
           --body-text-color: ${color.body_text_color.value};
           --button-text-color: ${color.button_text_color.value};

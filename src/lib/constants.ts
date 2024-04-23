@@ -1,3 +1,5 @@
+import { OptionValue } from "@/types/product";
+
 export const HEX_TRANPARENCIES = {
   100: "FF",
   99: "FC",
@@ -101,3 +103,37 @@ export const HEX_TRANPARENCIES = {
   1: "03",
   0: "00",
 };
+
+export const FILTER_PRICE_DEFAULT = "0-0";
+export const FILTER_BY_PRICE: OptionValue[] = [
+  { id: "0-0", name: "All", value: "0-0", type: "price", position: 0 },
+  { id: "0-25", name: "Up to $25", value: "0-25", type: "price", position: 0 },
+  {
+    id: "25-50",
+    name: "$25 to $50",
+    value: "25-50",
+    type: "price",
+    position: 0,
+  },
+  {
+    id: "50-100",
+    name: "$50 to $100",
+    value: "50-100",
+    type: "price",
+    position: 0,
+  },
+  {
+    id: "100-150",
+    name: "$100 to $150",
+    value: "100-150",
+    type: "price",
+    position: 0,
+  },
+  {
+    id: "150-0",
+    name: "$150 & above",
+    value: "150-0",
+    type: "price",
+    position: 0,
+  },
+];

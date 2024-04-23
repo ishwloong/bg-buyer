@@ -2,8 +2,9 @@ import React from "react";
 import Navigation from "./Navigation";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { Search, ShoppingBag, User } from "lucide-react";
+import { Search, ShoppingBag, ShoppingCart, User } from "lucide-react";
 import { HeaderBarSettings, HeaderConfigObj } from "@/types/header";
+import Link from "next/link";
 
 const HeaderRich = async ({
   template_type,
@@ -56,7 +57,9 @@ const HeaderRich = async ({
           <div className="flex flex-1 justify-end order-3 gap-4 header_icons">
             <User className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
 
-            <ShoppingBag className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer" />
+            <Link href="/cart">
+              <ShoppingCart className="hover:text-[color:var(--color-primary)] transition-all cursor-pointer fill-none w-6 h-6" />
+            </Link>
           </div>
         </div>
       </div>

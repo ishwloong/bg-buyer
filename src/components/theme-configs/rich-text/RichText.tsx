@@ -27,7 +27,7 @@ const RichText = ({
     <div
       className={cn(
         !full_width?.value ? "max-w-[1320px] m-auto p-6" : "2xl:px-20 p-6",
-        rich_text_centered?.value ? "items-center" : "items-start",
+        rich_text_centered?.value ? "text-center" : "text-start",
         "w-full relative flex flex-col gap-8 mb-block-default"
       )}
     >

@@ -86,7 +86,7 @@ const FeaturedCollection = async ({
           style={{
             gridTemplateColumns: `repeat(${fc_product_per_row?.value}, minmax(0, 1fr))`,
           }}
-          className="md:grid flex flex-col gap-6"
+          className="md:grid flex flex-col gap-6 wrap-product"
         >
           {result.map((item: any) => (
             <FcProductCard

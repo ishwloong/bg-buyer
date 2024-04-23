@@ -4,3 +4,10 @@ export type BgsResponse<T> = {
   data: T;
   error?: any;
 };
+
+export type PagingResponse<T> = {
+  page: number;
+  page_size: number;
+  total: number;
+  result: T;
+};

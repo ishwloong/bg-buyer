@@ -9,11 +9,12 @@ const FcProductCard = ({ item, fc_ratio, btn_product }: Props) => {
   return (
     <div
       key={item.id}
-      className="w-full flex flex-col gap-4 items-stretch cursor-pointer group"
+      className="w-full flex flex-col gap-4 items-stretch cursor-pointer group wrap-product"
     >
       <div
         className={cn(
-          "w-full overflow-hidden border rounded-[var(--border-radius)] relative"
+          "w-full overflow-hidden relative fc_image_product",
+          fc_ratio
         )}
       >
         <Heart className="absolute top-4 right-4 hover:text-[color:var(--color-primary)] z-10" />
@@ -36,13 +37,15 @@ const FcProductCard = ({ item, fc_ratio, btn_product }: Props) => {
         )}
       </div>
 
-      <div className="flex flex-col gap-2">
-        <span className="group-hover:text-[color:var(--color-primary)] transition-all truncate">
+      <div className="flex flex-col gap-2 fc_product_info">
+        <span className="transition-all product_title">
           {item.title}
         </span>
-        <h4 className="flex gap-2">
-          <span className="font-bold text-xl">{item.price}$</span>
-          <span className="text-[#9E9E9E] text-xl line-through">
+        <h4 className="flex gap-2 product_price">
+          <span className="product_current_price fontbold text-xl">
+            {item.price}$
+          </span>
+          <span className="line-through product_sale_price">
             {item.compare_price}$
           </span>
         </h4>
